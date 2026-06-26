@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade 9 Chemistry — Unit 1 Exam Prep</title>
+<style>
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #65656b;
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f4f0fb;
+  --color-border-tertiary: #d8cfee;
+  --border-radius-md: 8px;
+  --border-radius-lg: 14px;
+  --accent: #4a29a0;
+  --accent-light: #ede9fc;
+  --accent-mid: #6344cc;
+  --color-background-warning: #fff8e1;
+  --color-border-warning: #f0c84c;
+  --color-text-warning: #7a5c0a;
+  --color-background-info: #eaf3fb;
+  --color-border-info: #80c4f0;
+  --color-text-info: #0d5a8c;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  background: #ede8f8;
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+}
+#root { display: flex; justify-content: center; padding: 24px 16px 60px; min-height: 100vh; }
+.app-card {
+  background: var(--color-background-primary);
+  border-radius: 18px;
+  box-shadow: 0 2px 28px rgba(60,30,120,0.11);
+  padding: 28px 28px 36px;
+  width: 100%; max-width: 700px;
+}
+
+/* Hero */
+.hero-banner {
+  background: linear-gradient(135deg, #3b1d8c 0%, #5a32c8 60%, #7c5ce1 100%);
+  border-radius: 14px; padding: 22px 20px 18px;
+  margin-bottom: 22px; position: relative; overflow: hidden;
+}
+.hero-banner::before {
+  content: "⚗️";
+  position: absolute; right: 18px; top: 10px;
+  font-size: 56px; opacity: 0.18;
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.22);
+  color: #fff; font-size: 11px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  border-radius: 20px; padding: 3px 12px; margin-bottom: 8px;
+}
+.hero-title { font-size: 24px; font-weight: 700; color: #fff; margin: 0 0 4px; }
+.hero-sub { font-size: 14px; color: rgba(255,255,255,0.85); margin: 0 0 12px; }
+.hero-meta { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero-meta-item { font-size: 12px; color: rgba(255,255,255,0.9); display: flex; align-items: center; gap: 5px; }
+
+/* Stats */
+.stats-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px; margin-bottom: 22px;
+}
+.stat-box {
+  border: 1.5px solid; border-radius: var(--border-radius-lg);
+  padding: 12px 10px; text-align: center;
+}
+.stat-emoji { font-size: 22px; }
+.stat-num { font-size: 20px; font-weight: 700; }
+.stat-label { font-size: 11px; color: var(--color-text-secondary); }
+
+/* Section label */
+.section-label {
+  font-size: 11px; font-weight: 600; color: var(--color-text-secondary);
+  text-transform: uppercase; letter-spacing: 0.07em; margin: 0 0 10px;
+}
+
+/* Topic list */
+.topic-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.topic-btn {
+  background: var(--color-background-primary);
+  border: 1.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-md);
+  padding: 12px 14px; display: flex; align-items: center; gap: 12px;
+  cursor: pointer; text-align: left; width: 100%; font-family: inherit;
+  transition: background 0.13s, border-color 0.13s, box-shadow 0.13s;
+}
+.topic-btn:hover {
+  background: var(--accent-light); border-color: var(--accent-mid);
+  box-shadow: 0 2px 8px rgba(74,41,160,0.12);
+}
+.topic-emoji { font-size: 20px; line-height: 1; }
+.topic-title-wrap { flex: 1; }
+.topic-title { font-size: 14px; font-weight: 600; color: var(--color-text-primary); }
+.topic-desc { font-size: 12px; color: var(--color-text-secondary); }
+.topic-arrow { font-size: 16px; color: var(--color-text-secondary); }
+
+.quiz-cta { border-top: 1px solid var(--color-border-tertiary); padding-top: 18px; }
+.quiz-cta-text { font-size: 13px; color: var(--color-text-secondary); margin: 0 0 12px; }
+
+/* Buttons */
+.primary-btn {
+  background: var(--accent); color: #fff; border: none;
+  border-radius: var(--border-radius-md); padding: 13px 24px;
+  font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit;
+  transition: background 0.13s, box-shadow 0.13s;
+}
+.primary-btn:hover { background: #361e7a; box-shadow: 0 3px 12px rgba(74,41,160,0.25); }
+.primary-btn.full-width { width: 100%; }
+.secondary-btn {
+  background: var(--color-background-secondary);
+  color: var(--color-text-primary); border: 1px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-md); padding: 10px 20px; font-size: 14px;
+  cursor: pointer; font-family: inherit; transition: background 0.12s;
+}
+.secondary-btn:hover { background: #d8d0f0; }
+.back-btn {
+  background: none; border: none; color: var(--color-text-secondary);
+  font-size: 13px; cursor: pointer; margin-bottom: 14px; padding: 0;
+  font-family: inherit; display: flex; align-items: center; gap: 4px;
+}
+
+/* Section detail */
+.section-header { border-left: 4px solid; padding-left: 16px; margin-bottom: 20px; }
+.section-title { font-size: 20px; font-weight: 700; margin: 0 0 4px; }
+.section-subtitle { font-size: 13px; color: var(--color-text-secondary); margin: 0; }
+.summary { font-size: 15px; color: var(--color-text-secondary); line-height: 1.75; margin: 0 0 16px; }
+
+.tip {
+  background: var(--color-background-warning); border: 1px solid var(--color-border-warning);
+  border-radius: var(--border-radius-md); padding: 10px 14px; margin-bottom: 16px;
+  font-size: 14px; color: var(--color-text-warning); line-height: 1.6;
+}
+
+.block-label {
+  font-size: 11px; font-weight: 600; color: var(--color-text-secondary);
+  text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 8px;
+}
+.keybox-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.keybox-item {
+  background: var(--color-background-secondary);
+  border: 1px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-md); padding: 10px 14px;
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.keybox-emoji { font-size: 18px; line-height: 1.3; }
+.keybox-name { font-weight: 600; font-size: 14px; }
+.keybox-desc { font-size: 13px; color: var(--color-text-secondary); margin-left: 4px; }
+
+.table-wrap { overflow-x: auto; margin-bottom: 16px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { background: var(--accent); color: #fff; padding: 8px 10px; text-align: left; font-weight: 600; }
+td { padding: 7px 10px; border-bottom: 1px solid var(--color-border-tertiary); }
+tr:nth-child(even) td { background: var(--color-background-secondary); }
+
+.compare-box {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;
+}
+.compare-card {
+  border-radius: var(--border-radius-md); padding: 12px 14px;
+  border: 1.5px solid;
+}
+.compare-card h4 { margin: 0 0 6px; font-size: 14px; }
+.compare-card p { margin: 0; font-size: 13px; line-height: 1.5; }
+
+.nav-row { display: flex; gap: 10px; margin-top: 20px; }
+
+/* Quiz */
+.quiz-progress {
+  display: flex; justify-content: space-between;
+  margin-bottom: 10px; font-size: 13px; color: var(--color-text-secondary);
+}
+.progress-bar-wrap { height: 5px; background: #d8d0ee; border-radius: 3px; margin-bottom: 16px; }
+.progress-bar { height: 100%; background: var(--accent); border-radius: 3px; transition: width 0.3s; }
+.question-box {
+  background: var(--color-background-secondary); border-radius: var(--border-radius-lg);
+  padding: 16px 20px; margin-bottom: 14px; border: 1px solid var(--color-border-tertiary);
+}
+.question-label { font-size: 11px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 6px; }
+.question-text { font-weight: 600; font-size: 15px; margin: 0; line-height: 1.5; }
+
+.options-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+.opt-btn {
+  background: var(--color-background-primary); border: 1.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-md); padding: 11px 14px; text-align: left;
+  font-size: 14px; color: var(--color-text-primary); cursor: pointer;
+  font-family: inherit; width: 100%; transition: border-color 0.12s, background 0.12s;
+}
+.opt-btn:hover:not(:disabled) { background: var(--accent-light); border-color: var(--accent-mid); }
+.opt-btn:disabled { cursor: default; }
+.opt-correct { background: #e4f5ea !important; border: 1.5px solid #2ea04a !important; color: #14632a !important; font-weight: 600; }
+.opt-wrong { background: #feecec !important; border: 1.5px solid #e04b4a !important; color: #9a2626 !important; }
+
+.explanation-box {
+  background: var(--color-background-info); border: 1px solid var(--color-border-info);
+  border-radius: var(--border-radius-md); padding: 10px 14px; margin-bottom: 12px;
+  font-size: 13px; color: var(--color-text-info); line-height: 1.6;
+}
+
+/* Results */
+.quiz-results { text-align: center; padding: 2rem 1rem; }
+.results-emoji { font-size: 52px; margin-bottom: 10px; }
+.results-title { font-size: 22px; font-weight: 700; margin: 0 0 6px; }
+.results-sub { font-size: 15px; color: var(--color-text-secondary); margin: 0 0 4px; }
+.results-score { font-size: 42px; font-weight: 800; color: var(--accent); margin: 0 0 4px; }
+.results-message { font-size: 14px; color: var(--color-text-secondary); margin: 0 0 24px; }
+.results-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.grade-table { margin: 16px auto 20px; max-width: 340px; font-size: 13px; border-radius: 10px; overflow: hidden; }
+.grade-table th { background: var(--accent); }
+
+@media (max-width: 480px) {
+  .app-card { padding: 18px 14px 24px; }
+  .hero-title { font-size: 20px; }
+  .compare-box { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const sections = [
+  {
+    id: "definition",
+    emoji: "⚗️",
+    title: "Definition & Scope of Chemistry",
+    color: "#4a29a0",
+    bg: "#ede9fc",
+    desc: "What is chemistry? Why does it matter?",
+    content: [
+      { type: "summary", text: "Chemistry is the branch of science that deals with the composition, structure, properties, and changes of matter. It studies WHAT matter is made of and HOW it behaves and changes." },
+      { type: "tip", text: "🌟 Chemistry is called the 'CENTRAL SCIENCE' because it connects and bridges all other natural sciences — Biology, Physics, Geology, Medicine, and Agriculture all depend on chemistry." },
+      {
+        type: "keybox", label: "Key Terms You Must Know",
+        items: [
+          { emoji: "⚗️", name: "Chemistry", desc: "The study of composition, structure, properties, and changes of matter" },
+          { emoji: "🧱", name: "Matter", desc: "Anything that has MASS and takes up SPACE" },
+          { emoji: "🔥", name: "Chemical Change", desc: "Produces NEW substances with different properties (e.g., burning wood)" },
+          { emoji: "❄️", name: "Physical Change", desc: "Changes form/appearance WITHOUT making new substances (e.g., melting ice)" },
+          { emoji: "🌿", name: "Organic Chemistry", desc: "Study of CARBON-containing compounds — life, plastics, fuels, medicines" },
+          { emoji: "🪨", name: "Inorganic Chemistry", desc: "Study of compounds that do NOT contain carbon — metals, salts, minerals" },
+          { emoji: "🧬", name: "Biochemistry", desc: "Chemical processes in LIVING organisms — DNA, enzymes, metabolism" }
+        ]
+      },
+      {
+        type: "compare",
+        items: [
+          { title: "Physical Change ❄️", color: "#1a5e7a", bg: "#e3f4fb", body: "Same substance, different form. No new substances formed. Reversible. Examples: melting ice, boiling water, dissolving salt." },
+          { title: "Chemical Change 🔥", color: "#7a1a1a", bg: "#fdf0ec", body: "New substances with different properties formed. Usually irreversible. Examples: burning wood, rusting iron, cooking food." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "branches",
+    emoji: "🌿",
+    title: "Branches of Chemistry",
+    color: "#1a6b3c",
+    bg: "#e6f5ec",
+    desc: "8 specialized fields of chemistry",
+    content: [
+      { type: "summary", text: "Chemistry is a vast science divided into specialized branches. Each focuses on a different aspect of matter and its interactions." },
+      {
+        type: "table",
+        label: "All Major Branches",
+        headers: ["Branch", "What It Studies"],
+        rows: [
+          ["🌿 Organic Chemistry", "Carbon compounds — basis of life, plastics, fuels, most medicines"],
+          ["🪨 Inorganic Chemistry", "Non-carbon compounds — metals, minerals, salts, ceramics"],
+          ["⚡ Physical Chemistry", "Applies physics principles to chemical systems — energy, kinetics"],
+          ["🔍 Analytical Chemistry", "Identifies & measures substances in a sample (qualitative & quantitative)"],
+          ["🧬 Biochemistry", "Chemical processes in living things — proteins, DNA, enzymes"],
+          ["🏭 Industrial Chemistry", "Large-scale manufacturing of chemicals for commercial use"],
+          ["🌍 Environmental Chemistry", "Studies chemicals in the environment and their ecological impact"],
+          ["☢️ Nuclear Chemistry", "Radioactive elements, nuclear reactions, and radiation"]
+        ]
+      },
+      { type: "tip", text: "📝 Exam Tip: Ecology is a branch of BIOLOGY — not chemistry! Don't confuse Environmental Chemistry (a chemistry branch) with Ecology (a biology branch)." }
+    ]
+  },
+  {
+    id: "society",
+    emoji: "🌍",
+    title: "Chemistry in Society",
+    color: "#1a5e7a",
+    bg: "#e3f4fb",
+    desc: "Agriculture, medicine, food, energy & environment",
+    content: [
+      { type: "summary", text: "Chemistry isn't just in a laboratory — it surrounds your entire life. From the food you eat to the medicine you take to the buildings around you, chemistry made all of it." },
+      {
+        type: "keybox", label: "Chemistry in Everyday Life",
+        items: [
+          { emoji: "🌾", name: "Agriculture", desc: "Fertilizers (NPK = nitrogen, phosphorus, potassium), pesticides, herbicides — all chemical compounds that boost crop yields" },
+          { emoji: "💊", name: "Medicine & Health", desc: "Antibiotics (penicillin from mould), vaccines, painkillers, anesthetics — all chemistry saves lives every day" },
+          { emoji: "🍞", name: "Food Production", desc: "Fermentation makes bread, beer, wine, yogurt. Preservatives, food additives, and colorings are all chemical compounds" },
+          { emoji: "🏗️", name: "Building & Construction", desc: "Cement, steel, glass, paint, and plastics — all products of chemical processes" },
+          { emoji: "⚡", name: "Energy", desc: "Combustion of fossil fuels, battery chemistry, solar cells, and biofuels all involve chemical reactions" },
+          { emoji: "🌊", name: "Environment", desc: "Water treatment (chlorination, filtration), waste management, and developing clean technologies" }
+        ]
+      },
+      { type: "tip", text: "💡 Fermentation formula to remember: Glucose → Ethanol + Carbon dioxide (CO2). CO2 makes bread rise; ethanol is the alcohol in beer and wine. Yeast does the work!" }
+    ]
+  },
+  {
+    id: "ethiopia",
+    emoji: "🇪🇹",
+    title: "Chemical Industries in Ethiopia",
+    color: "#8a5a00",
+    bg: "#fef5e7",
+    desc: "Local factories & their chemistry",
+    content: [
+      { type: "summary", text: "Ethiopia has a growing chemical industry. Knowing these factories and their products is frequently tested in national exams!" },
+      {
+        type: "table",
+        label: "Ethiopian Chemical Industries — Exam Favorites",
+        headers: ["Factory / Industry", "Product", "Chemistry Involved"],
+        rows: [
+          ["🏭 Mugher Cement Factory", "Cement", "Calcium silicate from limestone — chemical processing"],
+          ["🌱 Awash Melkasa", "Fertilizers (ammonium sulfate)", "Nitrogen chemistry for agriculture"],
+          ["🫧 Ethiopian Soap Factory", "Soap & detergent", "Saponification: fat + NaOH → soap + glycerol"],
+          ["🍺 Meta / St. George / Habesha", "Beer & beverages", "Fermentation: yeast converts sugar → ethanol + CO2"],
+          ["💊 EPHARM", "Medicines & drugs", "Organic & medicinal chemistry"],
+          ["👗 Almeda / Hawassa IC", "Textiles & fabric", "Chemical dyes, bleaches, fabric treatment"],
+          ["🍬 Wonji / Finchaa Sugar", "Sugar", "Chemical processing of sugarcane"],
+          ["🪟 Ethiopian Glass Factory", "Glass & ceramics", "Silica (SiO2) fusion at high temperature"],
+          ["🎨 Ethiopian Paint Industries", "Paints & varnish", "Chemical pigments and resins"],
+          ["👞 Ethiopian Tanneries", "Leather", "Chemical tanning of animal hides"]
+        ]
+      },
+      { type: "tip", text: "🚨 Common exam trap: Awash Melkasa = FERTILIZERS. Mugher = CEMENT. These two are frequently swapped in exam questions — memorize them!" }
+    ]
+  },
+  {
+    id: "relationships",
+    emoji: "🔗",
+    title: "Chemistry & Other Sciences",
+    color: "#993556",
+    bg: "#fbeaf0",
+    desc: "How chemistry connects to everything",
+    content: [
+      { type: "summary", text: "Chemistry earns the title 'central science' by connecting to EVERY other field of science. Understanding these relationships is key for both Grade 9 and Grade 12 exams." },
+      {
+        type: "keybox", label: "Chemistry's Connections",
+        items: [
+          { emoji: "🧬", name: "Chemistry + Biology", desc: "Biochemistry bridges them — photosynthesis, respiration, DNA structure, digestion are all chemical reactions in living organisms" },
+          { emoji: "⚡", name: "Chemistry + Physics", desc: "Physical chemistry — applies thermodynamics, energy, and kinetics to chemical systems. Both study matter and energy" },
+          { emoji: "💊", name: "Chemistry + Medicine", desc: "Pharmacology = chemistry + medicine. Drug discovery, antibiotics (penicillin), vaccines, all require deep chemical knowledge" },
+          { emoji: "🪨", name: "Chemistry + Geology", desc: "Geochemistry studies the chemical composition of rocks, minerals, soil, and Earth's crust" },
+          { emoji: "🌾", name: "Chemistry + Agriculture", desc: "Fertilizers, pesticides, herbicides, and soil chemistry analysis all depend on chemical knowledge for modern farming" },
+          { emoji: "🌍", name: "Chemistry + Environment", desc: "Understanding acid rain, ozone depletion, water pollution, and developing clean solutions all require chemistry" }
+        ]
+      }
+    ]
+  }
+];
+
+const quizQuestions = [
+  { q: "What is the best definition of Chemistry?", opts: ["A. The study of living organisms and their environment", "B. The study of composition, structure, properties, and changes of matter", "C. The study of numbers and calculations", "D. The study of space and planets"], ans: "B", exp: "Chemistry studies matter and how it changes." },
+  { q: "Why is Chemistry called the 'central science'?", opts: ["A. It is the oldest branch of science", "B. It is the most difficult subject", "C. It connects and bridges all other natural sciences", "D. It is taught in the center of every school"], ans: "C", exp: "Chemistry links biology, physics, geology, medicine, and more." },
+  { q: "Which branch of chemistry studies CARBON-CONTAINING compounds?", opts: ["A. Inorganic Chemistry", "B. Analytical Chemistry", "C. Organic Chemistry", "D. Nuclear Chemistry"], ans: "C", exp: "Organic = carbon-based. All life is carbon-based." },
+  { q: "Biochemistry is the study of:", opts: ["A. Chemical reactions in the laboratory", "B. Chemical processes in living organisms", "C. Chemical properties of rocks", "D. Chemical reactions in the ocean"], ans: "B", exp: "Biochemistry focuses on chemistry in living things — DNA, enzymes, metabolism." },
+  { q: "Which branch of chemistry identifies and measures substances in a sample?", opts: ["A. Organic Chemistry", "B. Physical Chemistry", "C. Nuclear Chemistry", "D. Analytical Chemistry"], ans: "D", exp: "Analytical chemistry = analyzing and identifying substances." },
+  { q: "Fertilizers in agriculture are best described as:", opts: ["A. Products of physics", "B. Biological compounds only", "C. Chemical compounds that improve soil nutrients and crop yield", "D. Radioactive materials"], ans: "C", exp: "Fertilizers are chemical compounds like NPK (nitrogen, phosphorus, potassium)." },
+  { q: "Penicillin is an antibiotic discovered from mould. This shows chemistry's role in:", opts: ["A. Agriculture", "B. Building and construction", "C. Medicine and health", "D. Environmental science"], ans: "C", exp: "Antibiotics are chemical compounds that save lives by fighting infections." },
+  { q: "The process used to produce soap from fat and sodium hydroxide (NaOH) is called:", opts: ["A. Fermentation", "B. Saponification", "C. Combustion", "D. Distillation"], ans: "B", exp: "Saponification: fat + NaOH → soap + glycerol." },
+  { q: "Which Ethiopian industry uses fermentation chemistry to produce its product?", opts: ["A. Mugher Cement Factory", "B. Awash Melkasa Fertilizer", "C. Meta Brewery (beer)", "D. Ethiopian Glass Factory"], ans: "C", exp: "Meta brewery ferments sugar with yeast to produce beer." },
+  { q: "Which of the following is a CHEMICAL change?", opts: ["A. Melting ice into water", "B. Cutting a piece of paper", "C. Burning wood into ash and smoke", "D. Dissolving salt in water"], ans: "C", exp: "Burning = combustion = new substances formed (ash, gases). It's a chemical change." },
+  { q: "Which of the following is a PHYSICAL change?", opts: ["A. Rusting of iron", "B. Digestion of food", "C. Melting of wax", "D. Burning of coal"], ans: "C", exp: "Melting wax changes form (solid → liquid) but no new substance. It's physical." },
+  { q: "What is matter?", opts: ["A. Anything that produces energy", "B. Anything that has mass and takes up space", "C. Only liquids and gases", "D. Energy in all forms"], ans: "B", exp: "The scientific definition: matter = anything with mass and volume." },
+  { q: "Physical chemistry is best described as:", opts: ["A. Completely unrelated to physics", "B. Applying physics principles (energy, thermodynamics) to chemical systems", "C. A replacement for regular chemistry", "D. The study of gases only"], ans: "B", exp: "Physical chemistry = chemistry + physics = studying energy and kinetics in reactions." },
+  { q: "Mugher Cement Factory in Ethiopia produces:", opts: ["A. Fertilizers", "B. Beer and beverages", "C. Soap and detergent", "D. Cement for construction"], ans: "D", exp: "Mugher Cement Factory = CEMENT. Common exam trap with Awash Melkasa!" },
+  { q: "The Awash Melkasa factory in Ethiopia produces:", opts: ["A. Beer and beverages", "B. Fertilizers (ammonium sulfate)", "C. Soap and detergent", "D. Glass and ceramics"], ans: "B", exp: "Awash Melkasa = FERTILIZERS. It produces ammonium sulfate for agriculture." },
+  { q: "Fermentation is used in the production of:", opts: ["A. Cement and paint", "B. Bread, beer, and wine", "C. Soap and leather", "D. Glass and fertilizers"], ans: "B", exp: "Fermentation: yeast converts glucose → ethanol + CO2. Bread rises, beer & wine have alcohol." },
+  { q: "Environmental chemistry is important because it helps us:", opts: ["A. Build taller buildings", "B. Produce more medicines", "C. Understand and reduce pollution", "D. Increase crop yields only"], ans: "C", exp: "Environmental chemistry addresses acid rain, ozone depletion, water treatment, and pollution solutions." },
+  { q: "In chemistry, 'organic' refers to compounds containing:", opts: ["A. Oxygen", "B. Nitrogen", "C. Carbon", "D. Sulfur"], ans: "C", exp: "Organic = carbon-based. All life is carbon-based — DNA, proteins, glucose." },
+  { q: "Which of the following is NOT a branch of chemistry?", opts: ["A. Biochemistry", "B. Analytical Chemistry", "C. Ecology", "D. Inorganic Chemistry"], ans: "C", exp: "Ecology is a branch of BIOLOGY — not chemistry! Don't get confused." },
+  { q: "EPHARM (Ethiopian Pharmaceutical Corporation) uses chemistry to:", opts: ["A. Produce fertilizers for farms", "B. Make textiles and clothing", "C. Manufacture medicines and drugs", "D. Process leather for shoes"], ans: "C", exp: "EPHARM = medicines & drugs = pharmaceutical chemistry." },
+  { q: "A student sees iron turning reddish-brown when left outside. This is:", opts: ["A. A physical change called melting", "B. A chemical change called rusting (oxidation)", "C. A nuclear reaction", "D. Impossible to determine"], ans: "B", exp: "Rusting = iron + oxygen → iron oxide. It's a chemical change." },
+  { q: "Tanneries in Ethiopia use chemicals to:", opts: ["A. Brew beer", "B. Make fertilizers", "C. Process animal hides into leather", "D. Produce electrical power"], ans: "C", exp: "Tanneries use chemical tanning processes to convert hides into usable leather." },
+  { q: "Chemistry is important in agriculture primarily because:", opts: ["A. It helps build schools and roads", "B. It enables production of fertilizers and pesticides that improve crop yields", "C. It only produces medicines", "D. It has no practical application"], ans: "B", exp: "Modern agriculture depends on NPK fertilizers, pesticides, and herbicides — all chemistry." },
+  { q: "Glass is produced by fusing silica (SiO2) at very high temperatures. This is:", opts: ["A. A physical change only", "B. A biological process", "C. A nuclear reaction", "D. A chemical change in the arrangement of atoms"], ans: "D", exp: "High temperature causes silica atoms to rearrange into glass structure — a chemical change." },
+  { q: "Chemistry is called the 'central science' because:", opts: ["A. It is taught in the center of every school", "B. It is the most ancient science", "C. It connects Biology, Physics, Medicine, Geology, and Agriculture", "D. It requires more study than other sciences"], ans: "C", exp: "Chemistry bridges all natural sciences — biology (biochemistry), physics (physical chemistry), medicine, geology, and agriculture." },
+  // Grade 12 bonus questions
+  { q: "In an exothermic reaction, energy is:", opts: ["A. Absorbed from the surroundings", "B. Released into the surroundings", "C. Neither absorbed nor released", "D. Converted to matter"], ans: "B", exp: "Exothermic = 'exit heat' = releases energy. Examples: burning, combustion reactions." },
+  { q: "The pH scale measures:", opts: ["A. The mass of a substance", "B. The temperature of a solution", "C. The concentration of H⁺ ions (acidity/basicity)", "D. The density of a liquid"], ans: "C", exp: "pH = power of hydrogen = measure of acidity/basicity. pH 7 = neutral, <7 = acidic, >7 = basic." },
+  { q: "A catalyst in a chemical reaction:", opts: ["A. Is consumed during the reaction", "B. Increases the activation energy", "C. Speeds up the reaction without being consumed", "D. Lowers the temperature of the reaction"], ans: "C", exp: "Catalyst = speeds up reaction, is NOT used up, is NOT changed." },
+  { q: "Which statement about atoms is correct?", opts: ["A. Protons are in the electron cloud", "B. The nucleus contains protons and neutrons", "C. Electrons have positive charge", "D. Neutrons are found outside the nucleus"], ans: "B", exp: "Nucleus = protons + neutrons. Electrons are in the electron cloud with negative charge." },
+  { q: "Avogadro's number (6.022 × 10²³) represents:", opts: ["A. The number of atoms in 1 gram of any element", "B. The number of particles in one mole of a substance", "C. The speed of light in a vacuum", "D. The number of electrons in an atom"], ans: "B", exp: "1 mole = 6.022 × 10²³ particles. This is a fundamental constant in chemistry." }
+];
+
+let currentView = "home";
+let currentSection = null;
+let currentQuiz = { idx: 0, score: 0, answered: false, selectedOpt: null };
+
+function render() {
+  const root = document.getElementById("root");
+  if (currentView === "home") root.innerHTML = renderHome();
+  else if (currentView === "section") root.innerHTML = renderSection();
+  else if (currentView === "quiz") root.innerHTML = renderQuiz();
+  else if (currentView === "results") root.innerHTML = renderResults();
+}
+
+function renderHome() {
+  return `
+  <div class="app-card">
+    <div class="hero-banner">
+      <div class="hero-badge">Grade 9 · National Exam Prep</div>
+      <div class="hero-title">Chemistry Unit 1 ⚗️</div>
+      <div class="hero-sub">Chemistry & Its Importance — Complete Exam Preparation</div>
+      <div class="hero-meta">
+        <span class="hero-meta-item">📚 5 Topics</span>
+        <span class="hero-meta-item">❓ 30 Questions</span>
+        <span class="hero-meta-item">⏱️ ~45 min</span>
+        <span class="hero-meta-item">🎓 Gr 9 + Gr 12</span>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-box" style="border-color:#d5c6e8; color:#4a29a0; background:#f0ecfc">
+        <div class="stat-emoji">⚗️</div>
+        <div class="stat-num">5</div>
+        <div class="stat-label">Study Topics</div>
+      </div>
+      <div class="stat-box" style="border-color:#b8d8f0; color:#1a5e7a; background:#ebf5fb">
+        <div class="stat-emoji">❓</div>
+        <div class="stat-num">30</div>
+        <div class="stat-label">Exam Questions</div>
+      </div>
+      <div class="stat-box" style="border-color:#c3e6cb; color:#1a6b3c; background:#f0faf3">
+        <div class="stat-emoji">🇪🇹</div>
+        <div class="stat-num">10</div>
+        <div class="stat-label">Ethiopian Industries</div>
+      </div>
+      <div class="stat-box" style="border-color:#f5c6a0; color:#8a3c0a; background:#fef5ec">
+        <div class="stat-emoji">🏆</div>
+        <div class="stat-num">+5</div>
+        <div class="stat-label">Grade 12 Bonus</div>
+      </div>
+    </div>
+
+    <div class="section-label">📖 Study by Topic</div>
+    <div class="topic-list">
+      ${sections.map((s, i) => `
+        <button class="topic-btn" onclick="openSection(${i})" style="--sec-color:${s.color}; --sec-bg:${s.bg}">
+          <span class="topic-emoji">${s.emoji}</span>
+          <span class="topic-title-wrap">
+            <div class="topic-title">${s.title}</div>
+            <div class="topic-desc">${s.desc}</div>
+          </span>
+          <span class="topic-arrow">›</span>
+        </button>`).join("")}
+    </div>
+
+    <div class="quiz-cta">
+      <div class="quiz-cta-text">✅ Know your stuff? Take the full exam quiz — including Grade 12 bonus questions at the end!</div>
+      <button class="primary-btn full-width" onclick="startQuiz()">🚀 Start Exam Quiz (30 Questions)</button>
+    </div>
+  </div>`;
+}
+
+function renderSection() {
+  const s = sections[currentSection];
+  const prev = currentSection > 0 ? currentSection - 1 : null;
+  const next = currentSection < sections.length - 1 ? currentSection + 1 : null;
+  let html = `
+  <div class="app-card">
+    <button class="back-btn" onclick="goHome()">← Back to Topics</button>
+    <div class="section-header" style="border-color:${s.color}">
+      <div class="section-title">${s.emoji} ${s.title}</div>
+      <div class="section-subtitle" style="color:${s.color}">${s.desc}</div>
+    </div>`;
+
+  s.content.forEach(block => {
+    if (block.type === "summary") {
+      html += `<p class="summary">${block.text}</p>`;
+    } else if (block.type === "tip") {
+      html += `<div class="tip">${block.text}</div>`;
+    } else if (block.type === "keybox") {
+      html += `<div class="block-label">${block.label}</div>
+      <div class="keybox-list">${block.items.map(item => `
+        <div class="keybox-item">
+          <span class="keybox-emoji">${item.emoji}</span>
+          <span><span class="keybox-name">${item.name}</span><span class="keybox-desc"> — ${item.desc}</span></span>
+        </div>`).join("")}</div>`;
+    } else if (block.type === "table") {
+      html += `<div class="block-label">${block.label}</div>
+      <div class="table-wrap"><table>
+        <tr>${block.headers.map(h => `<th>${h}</th>`).join("")}</tr>
+        ${block.rows.map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join("")}</tr>`).join("")}
+      </table></div>`;
+    } else if (block.type === "compare") {
+      html += `<div class="compare-box">${block.items.map(item => `
+        <div class="compare-card" style="border-color:${item.color}; background:${item.bg}">
+          <h4 style="color:${item.color}">${item.title}</h4>
+          <p style="color:#444">${item.body}</p>
+        </div>`).join("")}</div>`;
+    }
+  });
+
+  html += `<div class="nav-row">
+    ${prev !== null ? `<button class="secondary-btn" onclick="openSection(${prev})">← ${sections[prev].emoji} Previous</button>` : ""}
+    <div style="flex:1"></div>
+    ${next !== null ? `<button class="primary-btn" onclick="openSection(${next})">Next ${sections[next].emoji} →</button>` : `<button class="primary-btn" onclick="startQuiz()">🚀 Take the Quiz!</button>`}
+  </div></div>`;
+  return html;
+}
+
+function renderQuiz() {
+  const q = quizQuestions[currentQuiz.idx];
+  const progress = (currentQuiz.idx / quizQuestions.length) * 100;
+  const isBonus = currentQuiz.idx >= 25;
+  return `
+  <div class="app-card">
+    <button class="back-btn" onclick="goHome()">← Exit Quiz</button>
+    <div class="quiz-progress">
+      <span>${isBonus ? "⭐ GRADE 12 BONUS — " : ""}Question ${currentQuiz.idx + 1} of ${quizQuestions.length}</span>
+      <span>Score: ${currentQuiz.score}/${currentQuiz.idx}</span>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar" style="width:${progress}%"></div></div>
+    <div class="question-box" ${isBonus ? 'style="border-color:#f0c84c; background:#fff8e1"' : ''}>
+      <div class="question-label" ${isBonus ? 'style="color:#8a5a00"' : ''}>${isBonus ? "⭐ Grade 12 Bonus" : `Question ${currentQuiz.idx + 1}`}</div>
+      <div class="question-text">${q.q}</div>
+    </div>
+    <div class="options-list">
+      ${q.opts.map(opt => {
+        const letter = opt[0];
+        let extraCls = "";
+        if (currentQuiz.answered) {
+          if (letter === q.ans) extraCls = "opt-correct";
+          else if (letter === currentQuiz.selectedOpt) extraCls = "opt-wrong";
+        }
+        return `<button class="opt-btn ${extraCls}" ${currentQuiz.answered ? 'disabled' : ''} onclick="answerQuiz('${letter}')">${opt}</button>`;
+      }).join("")}
+    </div>
+    ${currentQuiz.answered ? `
+      <div class="explanation-box">💡 <strong>Explanation:</strong> ${q.exp}</div>
+      <button class="primary-btn full-width" onclick="nextQuestion()">${currentQuiz.idx < quizQuestions.length - 1 ? "Next Question →" : "See My Results 🎉"}</button>
+    ` : ""}
+  </div>`;
+}
+
+function renderResults() {
+  const pct = Math.round((currentQuiz.score / quizQuestions.length) * 100);
+  let emoji = "😊", msg = "Good effort!", grade = "GOOD";
+  if (pct >= 90) { emoji = "🏆"; msg = "National Exam Champion! You are absolutely ready!"; grade = "EXCELLENT"; }
+  else if (pct >= 75) { emoji = "🌟"; msg = "Great performance! Review the ones you missed."; grade = "VERY GOOD"; }
+  else if (pct >= 60) { emoji = "📚"; msg = "On track — focus on Ethiopian industries & branches."; grade = "GOOD"; }
+  else if (pct >= 40) { emoji = "📖"; msg = "Keep going — you're building knowledge!"; grade = "NEEDS WORK"; }
+  else { emoji = "💪"; msg = "Re-read the study notes and try again — you've got this!"; grade = "START OVER"; }
+
+  return `
+  <div class="app-card">
+    <div class="quiz-results">
+      <div class="results-emoji">${emoji}</div>
+      <div class="results-title">Quiz Complete!</div>
+      <div class="results-sub">Chemistry Unit 1</div>
+      <div class="results-score">${currentQuiz.score}/${quizQuestions.length}</div>
+      <div class="results-sub">${pct}% — ${grade}</div>
+      <div class="results-message">${msg}</div>
+      <table class="grade-table">
+        <tr><th>Score</th><th>Grade</th><th>Advice</th></tr>
+        <tr><td>90–100%</td><td>🏆 Excellent</td><td>Exam ready!</td></tr>
+        <tr><td>75–89%</td><td>🌟 Very Good</td><td>Review missed Qs</td></tr>
+        <tr><td>60–74%</td><td>📚 Good</td><td>Focus on weak areas</td></tr>
+        <tr><td>40–59%</td><td>📖 Needs Work</td><td>Revise all notes</td></tr>
+        <tr><td>Below 40%</td><td>💪 Start Over</td><td>Re-read Unit 1</td></tr>
+      </table>
+      <div class="results-actions">
+        <button class="primary-btn" onclick="startQuiz()">🔄 Retry Quiz</button>
+        <button class="secondary-btn" onclick="goHome()">📚 Study More</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function openSection(idx) { currentSection = idx; currentView = "section"; render(); }
+function goHome() { currentView = "home"; render(); }
+function startQuiz() { currentQuiz = { idx: 0, score: 0, answered: false, selectedOpt: null }; currentView = "quiz"; render(); }
+function answerQuiz(letter) {
+  if (currentQuiz.answered) return;
+  const q = quizQuestions[currentQuiz.idx];
+  currentQuiz.answered = true; currentQuiz.selectedOpt = letter;
+  if (letter === q.ans) currentQuiz.score++;
+  render();
+}
+function nextQuestion() {
+  if (currentQuiz.idx < quizQuestions.length - 1) {
+    currentQuiz.idx++; currentQuiz.answered = false; currentQuiz.selectedOpt = null; render();
+  } else { currentView = "results"; render(); }
+}
+
+render();
+</script>
+</body>
+</html>
